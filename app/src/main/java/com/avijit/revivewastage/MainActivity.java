@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
                         if(!response.equals("success")){
                             Toast.makeText(MainActivity.this, "Incorrect email/password", Toast.LENGTH_SHORT).show();
                         }
+                        else {
+                            Toast.makeText(MainActivity.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 },
                         new Response.ErrorListener() {
