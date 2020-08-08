@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,7 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    Button loginButton,signUpButton;
+    Button loginButton;
+    TextView signUpButton;
     EditText emailEditText, passwordEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         emailEditText = findViewById(R.id.email_edit_text);
         passwordEditText = findViewById(R.id.pasword_edit_text);
-        loginButton = findViewById(R.id.button);
+        loginButton = findViewById(R.id.login);
         signUpButton = findViewById(R.id.signup_intent);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
