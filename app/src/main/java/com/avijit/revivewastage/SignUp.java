@@ -33,7 +33,7 @@ public class SignUp extends AppCompatActivity {
         nameEditText = findViewById(R.id.name_edit_text);
         emailEditText = findViewById(R.id.email_edit_text);
         phoneEditText = findViewById(R.id.phone_edit_text);
-        passwordEditText = findViewById(R.id.pasword_edit_text);
+        passwordEditText = findViewById(R.id.password_edit_text);
         signUpButton = findViewById(R.id.signup_button);
         loginButton = findViewById(R.id.login_button);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +46,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 RequestQueue requestQueue = Volley.newRequestQueue(SignUp.this);
-                String url = "https://finalproject.xyz/covid_19/api.php";
+                String url = "https://finalproject.xyz/revive_wastage/api.php";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
