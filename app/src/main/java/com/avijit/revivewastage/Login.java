@@ -22,44 +22,43 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignUp extends AppCompatActivity {
-    private static final String TAG = "SignUp";
-    EditText nameEditText,emailEditText,phoneEditText,passwordEditText;
-    Button signUpButton;
-    TextView loginButton;
-
+public class Login extends AppCompatActivity {
+    private static final String TAG = "Login";
+    Button loginButton;
+    TextView signUpButton;
+    EditText emailEditText, passwordEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-        nameEditText = findViewById(R.id.name_edit_text);
+        setContentView(R.layout.activity_login);
+
         emailEditText = findViewById(R.id.email_edit_text);
-        phoneEditText = findViewById(R.id.phone_edit_text);
-        passwordEditText = findViewById(R.id.password_edit_text);
-        signUpButton = findViewById(R.id.signup_button);
-        loginButton = findViewById(R.id.login_button);
+        passwordEditText = findViewById(R.id.pasword_edit_text);
+        loginButton = findViewById(R.id.login);
+        signUpButton = findViewById(R.id.signup_intent);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignUp.this,MainActivity.class));
-            }
-        });
-        signUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RequestQueue requestQueue = Volley.newRequestQueue(SignUp.this);
-                String url = "https://finalproject.xyz/revive_wastage/api.php/auth";
+                RequestQueue requestQueue = Volley.newRequestQueue(Login.this);
+                String url = "https://finalproject.xyz/revive_wastage/api.php/login";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        getSharedPreferences("Revive",MODE_PRIVATE).edit().putString("user",response).apply();
                         Log.d(TAG, "onResponse: "+response);
-                        Toast.makeText(SignUp.this, response, Toast.LENGTH_SHORT).show();
+                        if(!response.contains("success")){
+                            Toast.makeText(Login.this, "Incorrect email/password", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+
+                            Login.super.startActivity(new Intent(Login.this,MainActivity.class));
+                        }
                     }
                 },
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(SignUp.this, "error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, error.toString(), Toast.LENGTH_SHORT).show();
                             }
                         }){
                     @Override
@@ -70,17 +69,19 @@ public class SignUp extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String,String> params = new HashMap<>();
-                        params.put("register","1");
-                        params.put("name",nameEditText.getText().toString());
+                        params.put("login","1");
                         params.put("email",emailEditText.getText().toString());
-                        params.put("phone",phoneEditText.getText().toString());
                         params.put("password",passwordEditText.getText().toString());
-                        params.put("user_type_id","1");
                         return params;
                     }
                 };
                 requestQueue.add(stringRequest);
-
+            }
+        });
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this,SignUp.class));
             }
         });
     }
