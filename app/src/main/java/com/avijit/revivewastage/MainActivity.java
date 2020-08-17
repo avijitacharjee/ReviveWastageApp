@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity {
             startActivity(new Intent(getApplicationContext(),Profile.class));
         });
         buyProductButton.setOnClickListener(v->{
-
+            startActivity(new Intent(getApplicationContext(),BuyProduct.class));
         });
         sellProductButton.setOnClickListener(v->{
             startActivity(new Intent(getApplicationContext(),SellProduct.class));

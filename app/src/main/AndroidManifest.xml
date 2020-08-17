@@ -12,8 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SellProduct"
-            android:theme="@style/Theme.MaterialComponents"></activity>
+        <activity android:name=".BuyProduct"></activity>
+        <activity
+            android:name=".SellProduct"
+            android:theme="@style/Theme.MaterialComponents" />
         <activity android:name=".Profile" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SignUp" />
