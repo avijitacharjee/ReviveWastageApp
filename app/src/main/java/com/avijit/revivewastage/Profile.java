@@ -8,7 +8,7 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Profile extends AppCompatActivity {
+public class Profile extends BaseActivity {
     TextView nameTextView,emailTextView,phoneTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

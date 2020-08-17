@@ -22,7 +22,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignUp extends AppCompatActivity {
+public class SignUp extends BaseActivity {
     private static final String TAG = "SignUp";
     EditText nameEditText,emailEditText,phoneEditText,passwordEditText;
     Button signUpButton;
