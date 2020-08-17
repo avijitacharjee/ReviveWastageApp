@@ -23,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.avijit.revivewastage.model.User;
 import com.avijit.revivewastage.utils.AppUtils;
 import com.avijit.revivewastage.viewmodel.UserViewModel;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,6 +53,7 @@ public class Login extends BaseActivity {
                 appUtils.dialog.dismiss();
                 if(response.isNetworkSuccessful()){
                     if(response.getMessage().equals("success")){
+                        getSharedPreferences("Revive",MODE_PRIVATE).edit().putString("user",new Gson().toJson(response)).commit();
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                     }
                     else {

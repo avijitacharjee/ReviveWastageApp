@@ -54,7 +54,6 @@ public class UserRepository {
         return result;
     }
     public MutableLiveData<NetworkResponse<User>> login(User user){
-        abc(user);
         Log.d(TAG, "login: "+user.toString());
         final MutableLiveData<NetworkResponse<User>> result = new MutableLiveData<>();
         final NetworkResponse<User> fail = new NetworkResponse<>();
@@ -79,18 +78,5 @@ public class UserRepository {
         });
         return result;
     }
-    public void abc(User user){
-        authApi.abc(user).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Log.d(TAG,new Gson().toJson(response));
-            }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "onFailure: "+t.toString());
-            }
-        });
-
-    }
 }

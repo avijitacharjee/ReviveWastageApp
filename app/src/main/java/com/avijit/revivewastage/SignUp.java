@@ -59,7 +59,7 @@ public class SignUp extends BaseActivity {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(SignUp.this, "error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUp.this, error.toString(), Toast.LENGTH_SHORT).show();
                             }
                         }){
                     @Override
