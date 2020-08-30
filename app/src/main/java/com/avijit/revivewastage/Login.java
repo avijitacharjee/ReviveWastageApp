@@ -53,7 +53,7 @@ public class Login extends BaseActivity {
                 appUtils.dialog.dismiss();
                 if(response.isNetworkSuccessful()){
                     if(response.getMessage().equals("success")){
-                        getSharedPreferences("Revive",MODE_PRIVATE).edit().putString("user",new Gson().toJson(response)).commit();
+                        getSharedPreferences("Revive",MODE_PRIVATE).edit().putString("user",new Gson().toJson(response)).apply();
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                     }
                     else {

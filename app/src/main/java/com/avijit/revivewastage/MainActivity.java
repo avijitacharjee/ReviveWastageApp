@@ -23,5 +23,6 @@ public class MainActivity extends BaseActivity {
         sellProductButton.setOnClickListener(v->{
             startActivity(new Intent(getApplicationContext(),SellProduct.class));
         });
+
     }
 }

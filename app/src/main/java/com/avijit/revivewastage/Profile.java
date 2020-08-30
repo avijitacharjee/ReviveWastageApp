@@ -3,12 +3,14 @@ package com.avijit.revivewastage;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Profile extends BaseActivity {
+    private static final String TAG = "Profile";
     TextView nameTextView,emailTextView,phoneTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,7 @@ public class Profile extends BaseActivity {
             emailTextView.setText(data.getString("email"));
             phoneTextView.setText(data.getString("phone"));
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.d(TAG, "onCreate: "+e.toString());
         }
     }
 }

@@ -32,10 +32,7 @@ public class BuyProduct extends AppCompatActivity {
         allProductRecyclerView.setLayoutManager(layoutManager);
         RequestQueue requestQueue = Volley.newRequestQueue(BuyProduct.this);
         String url = "https://finalproject.xyz/revive_wastage/api.php/product";
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-            }
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, response -> {
         },
                 new Response.ErrorListener() {
                     @Override
