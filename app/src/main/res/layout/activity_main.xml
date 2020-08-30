@@ -16,7 +16,7 @@
         android:elevation="10dp"
         android:outlineProvider="bounds"
         android:padding="20dp"
-        android:text="Sell product"
+        android:text="@string/sell_product"
         android:textColor="#000"
         android:textSize="30sp"
         app:layout_constraintVertical_bias=".3"
@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
-        android:text="Buy Product"
+        android:text="@string/buy_product"
         android:textColor="#000"
         android:textSize="30sp"
         android:id="@+id/buy_product"
@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
     <TextView
-        android:text="Profile"
+        android:text="@string/profile"
         android:textColor="#000"
         android:textSize="30sp"
         android:id="@+id/profile_button"
