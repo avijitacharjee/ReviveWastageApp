@@ -40,12 +40,9 @@ public class SellProduct extends AppCompatActivity {
         goButton.setOnClickListener(v->{
             RequestQueue requestQueue = Volley.newRequestQueue(SellProduct.this);
             String url = "https://finalproject.xyz/revive_wastage/api.php/product";
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Log.d(TAG, "onResponse: "+response);
-                    Toast.makeText(SellProduct.this, response, Toast.LENGTH_SHORT).show();
-                }
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+                Log.d(TAG, "onResponse: "+response);
+                Toast.makeText(SellProduct.this, response, Toast.LENGTH_SHORT).show();
             },
                     new Response.ErrorListener() {
                         @Override
@@ -65,13 +62,12 @@ public class SellProduct extends AppCompatActivity {
                     params.put("price",priceEditText.getText().toString());
                     params.put("quantity",quantityEditText.getText().toString());
                     params.put("details",productDetailsEditText.getText().toString());
+                    params.put("category_id","1");
                     params.put("image","null");
                     return params;
                 }
             };
             requestQueue.add(stringRequest);
-
         });
-
     }
 }

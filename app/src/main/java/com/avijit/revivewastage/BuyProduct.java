@@ -1,6 +1,8 @@
 package com.avijit.revivewastage;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -19,18 +21,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BuyProduct extends AppCompatActivity {
-    TextView textView;
+    RecyclerView allProductRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_product);
-        textView = findViewById(R.id.text_view);
+        allProductRecyclerView = findViewById(R.id.all_product_recycler_view);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        allProductRecyclerView.setLayoutManager(layoutManager);
         RequestQueue requestQueue = Volley.newRequestQueue(BuyProduct.this);
         String url = "https://finalproject.xyz/revive_wastage/api.php/product";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                textView.setText(response);
             }
         },
                 new Response.ErrorListener() {
@@ -38,7 +42,7 @@ public class BuyProduct extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(BuyProduct.this, error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                }){
+                }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 return super.getHeaders();
@@ -46,7 +50,7 @@ public class BuyProduct extends AppCompatActivity {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
+                Map<String, String> params = new HashMap<>();
 
                 return params;
             }
