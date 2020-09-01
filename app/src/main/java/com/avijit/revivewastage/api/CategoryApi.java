@@ -12,7 +12,7 @@ import retrofit2.http.POST;
  * Created by Avijit Acharjee on 9/1/2020 at 5:54 PM.
  * Email: avijitach@gmail.com.
  */
-interface CategoryApi {
+public interface CategoryApi {
     @GET("category")
     Call<NetworkResponse<List<Category>>> getAllCategories();
 
