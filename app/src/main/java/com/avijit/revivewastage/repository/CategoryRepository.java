@@ -19,7 +19,7 @@ import retrofit2.Response;
  */
 public class CategoryRepository {
     private CategoryApi categoryApi;
-    CategoryRepository categoryRepository;
+    private static CategoryRepository categoryRepository;
 
     public static CategoryRepository getInstance() {
         if (categoryRepository == null) {

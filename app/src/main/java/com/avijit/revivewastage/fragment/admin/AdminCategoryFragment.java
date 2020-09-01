@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.avijit.revivewastage.R;
 import com.avijit.revivewastage.model.Category;
+import com.avijit.revivewastage.utils.AppUtils;
 import com.avijit.revivewastage.viewmodel.CategoryViewModel;
 
 import java.util.ArrayList;
@@ -41,7 +42,10 @@ public class AdminCategoryFragment extends Fragment {
         categoryList = new ArrayList<>();
         TextView textView = view.findViewById(R.id.text);
         viewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
+        AppUtils appUtils = new AppUtils(getContext());
+        appUtils.dialog.show();
         viewModel.all().observe(this,response->{
+            appUtils.dialog.dismiss();
             textView.setText(response.toString());
         });
     }
