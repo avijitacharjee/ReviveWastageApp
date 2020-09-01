@@ -51,4 +51,7 @@ class ProductRepository {
         });
         return result;
     }
+    public MutableLiveData<NetworkResponse<Product>> store(Product product){
+        return null;
+    }
 }

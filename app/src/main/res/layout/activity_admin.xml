@@ -1,0 +1,53 @@
+<androidx.drawerlayout.widget.DrawerLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="end"
+    tools:context=".AdminActivity"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        tools:context=".ui.News"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/black"
+                />
+
+        </com.google.android.material.appbar.AppBarLayout>
+        <!-- Content -->
+        <LinearLayout
+            android:background="@color/white_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <FrameLayout
+                android:id="@+id/admin_fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <!-- End of content -->
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:background="@color/white_1"
+        style="@style/Widget.Custom.NavigationView"
+        android:layout_width="wrap_content"
+        app:headerLayout="@layout/navigation_header_main"
+        android:fitsSystemWindows="true"
+        android:visibility="visible"
+        android:layout_gravity="end"
+        app:menu="@menu/admin"
+        android:layout_height="match_parent"/>
+</androidx.drawerlayout.widget.DrawerLayout>

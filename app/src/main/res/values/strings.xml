@@ -3,4 +3,19 @@
     <string name="profile">Profile</string>
     <string name="buy_product">Buy Product</string>
     <string name="sell_product">Sell product</string>
+    <string name="home">Admin Home</string>
+    <string name="about">About</string>
+    <string name="contact">Contact</string>
+    <string name="category">Category</string>
+    <string name="categories">Categories</string>
+
+    //navigation header
+    <string name="nav_header_desc">abc</string>
+    <string name="nav_header_title">abc</string>
+    <string name="nav_header_subtitle">abc</string>
+    <string name="users">Users</string>
+
+    //nav drawer
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

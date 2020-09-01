@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BuyProduct"></activity>
+        <activity android:name=".AdminActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"></activity>
+        <activity android:name=".BuyProduct" />
         <activity
             android:name=".SellProduct"
             android:theme="@style/Theme.MaterialComponents" />
