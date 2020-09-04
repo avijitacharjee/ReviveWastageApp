@@ -18,4 +18,10 @@ public interface CategoryApi {
 
     @POST("category")
     Call<NetworkResponse<Category>> store(@Body Category category);
+
+    @POST("category")
+    Call<NetworkResponse<Category>> update(@Body Category category);
+
+    @POST("category")
+    Call<NetworkResponse<Category>> delete(@Body Category category);
 }

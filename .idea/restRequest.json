@@ -1,0 +1,9 @@
+{
+  "uri": "https://finalproject.xyz/revive_wastage/api.php/category?id\u003d4",
+  "method": "DELETE",
+  "body": "",
+  "headers": {
+    "Accept": "*/*",
+    "Content-Type": "*/*"
+  }
+}

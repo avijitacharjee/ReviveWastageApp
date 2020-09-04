@@ -38,12 +38,13 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.categoryNameTextView.setText(categoryList.get(position).getName());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return categoryList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

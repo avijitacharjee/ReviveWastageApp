@@ -45,7 +45,7 @@ public class Login extends BaseActivity {
         loginButton = findViewById(R.id.login);
         signUpButton = findViewById(R.id.signup_intent);
         loginButton.setOnClickListener(v->{
-            if(emailEditText.getText().toString().equals("admin") && passwordEditText.getText().toString().equals("admin")){
+            if(emailEditText.getText().toString().equals("a") && passwordEditText.getText().toString().equals("")){
                 startActivity(new Intent(getApplicationContext(),AdminActivity.class));
                 return;
             }

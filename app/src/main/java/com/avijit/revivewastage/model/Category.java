@@ -10,6 +10,8 @@ public class Category {
     private String id;
     private String name;
     private String image;
+    private String update;
+    private String delete;
 
     public Category(String id, String name, String image) {
         this.id = id;
@@ -42,6 +44,22 @@ public class Category {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getUpdate() {
+        return update;
+    }
+
+    public void setUpdate(String update) {
+        this.update = update;
+    }
+
+    public String getDelete() {
+        return delete;
+    }
+
+    public void setDelete(String delete) {
+        this.delete = delete;
     }
 
     @Override
