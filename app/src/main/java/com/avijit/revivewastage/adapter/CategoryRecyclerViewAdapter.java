@@ -1,5 +1,6 @@
 package com.avijit.revivewastage.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.avijit.revivewastage.R;
+import com.avijit.revivewastage.model.Category;
 
+import java.util.List;
 import java.util.zip.Inflater;
 
 /**
@@ -18,6 +21,14 @@ import java.util.zip.Inflater;
  * Email: avijitach@gmail.com.
  */
 public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRecyclerViewAdapter.ViewHolder>{
+
+    private List<Category> categoryList;
+    private Context context;
+
+    public CategoryRecyclerViewAdapter(List<Category> categoryList, Context context) {
+        this.categoryList = categoryList;
+        this.context = context;
+    }
 
     @NonNull
     @Override
