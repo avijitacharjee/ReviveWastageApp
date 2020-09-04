@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.avijit.revivewastage.R;
+import com.avijit.revivewastage.adapter.CategoryRecyclerViewAdapter;
 import com.avijit.revivewastage.model.Category;
 import com.avijit.revivewastage.utils.AppUtils;
 import com.avijit.revivewastage.viewmodel.CategoryViewModel;
@@ -28,7 +29,7 @@ public class AdminCategoryFragment extends Fragment {
     RecyclerView recyclerView;
     private List<Category> categoryList;
     private CategoryViewModel viewModel;
-
+    private CategoryRecyclerViewAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,9 +45,11 @@ public class AdminCategoryFragment extends Fragment {
         viewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
         AppUtils appUtils = new AppUtils(getContext());
         appUtils.dialog.show();
+
         viewModel.all().observe(this,response->{
             appUtils.dialog.dismiss();
             textView.setText(response.toString());
+            adapter = new CategoryRecyclerViewAdapter();
         });
     }
 }
