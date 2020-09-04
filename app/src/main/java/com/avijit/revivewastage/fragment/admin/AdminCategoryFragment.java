@@ -50,6 +50,7 @@ public class AdminCategoryFragment extends Fragment {
             appUtils.dialog.dismiss();
             textView.setText(response.toString());
             adapter = new CategoryRecyclerViewAdapter(response.getData(),getContext());
+            recyclerView.setAdapter(adapter);
         });
     }
 }
