@@ -49,7 +49,7 @@ public class AdminCategoryFragment extends Fragment {
         viewModel.all().observe(this,response->{
             appUtils.dialog.dismiss();
             textView.setText(response.toString());
-            adapter = new CategoryRecyclerViewAdapter();
+            adapter = new CategoryRecyclerViewAdapter(response.getData(),getContext());
         });
     }
 }
