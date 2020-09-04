@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF"
+    android:background="@color/white_1"
     tools:context=".MainActivity">
 
     <TextView
@@ -19,6 +19,7 @@
         android:text="@string/sell_product"
         android:textColor="#000"
         android:textSize="30sp"
+        android:background="@color/white_1"
         app:layout_constraintVertical_bias=".3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +31,7 @@
         android:textSize="30sp"
         android:id="@+id/buy_product"
         android:elevation="2dp"
+        android:background="@color/white_1"
         android:padding="20dp"
         android:outlineProvider="bounds"
         android:layout_width="wrap_content"
@@ -38,6 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
+
     <TextView
         android:text="@string/profile"
         android:textColor="#000"
@@ -45,6 +48,7 @@
         android:id="@+id/profile_button"
         android:elevation="2dp"
         android:padding="20dp"
+        android:background="@color/white_1"
         android:outlineProvider="bounds"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
