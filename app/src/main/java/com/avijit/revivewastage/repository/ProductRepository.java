@@ -17,7 +17,7 @@ import retrofit2.Response;
  * Created by Avijit Acharjee on 9/1/2020 at 4:45 PM.
  * Email: avijitach@gmail.com.
  */
-class ProductRepository {
+public class ProductRepository {
     private ProductApi productApi;
     private ProductRepository productRepository;
     public ProductRepository getInstance(){

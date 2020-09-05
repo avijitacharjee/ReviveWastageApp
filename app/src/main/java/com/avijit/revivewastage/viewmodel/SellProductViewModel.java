@@ -5,7 +5,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.avijit.revivewastage.model.Category;
 import com.avijit.revivewastage.model.NetworkResponse;
+import com.avijit.revivewastage.model.Product;
 import com.avijit.revivewastage.repository.CategoryRepository;
+import com.avijit.revivewastage.repository.ProductRepository;
 
 import java.util.List;
 
@@ -15,6 +17,7 @@ import java.util.List;
  */
 public class SellProductViewModel extends ViewModel {
     CategoryRepository categoryRepository ;
+    ProductRepository productRepository;
     MutableLiveData<NetworkResponse<List<Category>>> categoryList;
     public SellProductViewModel(){
         categoryRepository = CategoryRepository.getInstance();
@@ -24,5 +27,8 @@ public class SellProductViewModel extends ViewModel {
             categoryList = categoryRepository.getAllCategories();
         }
         return categoryList;
+    }
+    public MutableLiveData<NetworkResponse<Product>> store(Product product){
+        return productRepository.store(product);
     }
 }
