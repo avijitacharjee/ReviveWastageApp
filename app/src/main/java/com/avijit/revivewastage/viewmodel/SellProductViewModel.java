@@ -21,6 +21,7 @@ public class SellProductViewModel extends ViewModel {
     MutableLiveData<NetworkResponse<List<Category>>> categoryList;
     public SellProductViewModel(){
         categoryRepository = CategoryRepository.getInstance();
+        productRepository = ProductRepository.getInstance();
     }
     public MutableLiveData<NetworkResponse<List<Category>>> getAllCategories(){
         if(categoryList==null){

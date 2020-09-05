@@ -2,6 +2,9 @@ package com.avijit.revivewastage.model;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Avijit Acharjee on 9/1/2020 at 5:57 PM.
  * Email: avijitach@gmail.com.
@@ -65,5 +68,12 @@ public class Category {
     @Override
     public String toString() {
         return new Gson().toJson(this);
+    }
+    public static List<String> catListToStringList(List<Category> categoryList){
+        List<String> catList = new ArrayList<>();
+        for(Category cat:categoryList){
+            catList.add(cat.getName());
+        }
+        return catList;
     }
 }

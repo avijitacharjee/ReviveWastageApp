@@ -2,7 +2,9 @@ package com.avijit.revivewastage.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -10,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
 
 
 /**
@@ -67,5 +71,12 @@ public class AppUtils {
             layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
             dialog.getWindow().setAttributes(layoutParams);
         }
+    }
+    public String bitmapToString(Bitmap bitmap){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        final String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return imageString;
     }
 }

@@ -19,8 +19,8 @@ import retrofit2.Response;
  */
 public class ProductRepository {
     private ProductApi productApi;
-    private ProductRepository productRepository;
-    public ProductRepository getInstance(){
+    private static ProductRepository productRepository;
+    public static ProductRepository getInstance(){
         if(productRepository==null){
             productRepository=new ProductRepository();
         }
