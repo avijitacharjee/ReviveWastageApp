@@ -52,6 +52,25 @@ class ProductRepository {
         return result;
     }
     public MutableLiveData<NetworkResponse<Product>> store(Product product){
-        return null;
+        MutableLiveData<NetworkResponse<Product>> result = new MutableLiveData<>();
+        NetworkResponse<Product> fail = new NetworkResponse<>();
+        fail.setNetworkSuccessful(false);
+        productApi.storeProduct(product).enqueue(new Callback<NetworkResponse<Product>>() {
+            @Override
+            public void onResponse(Call<NetworkResponse<Product>> call, Response<NetworkResponse<Product>> response) {
+                if(response.isSuccessful()){
+                    result.setValue(response.body());
+                }
+                else {
+                    result.setValue(fail);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NetworkResponse<Product>> call, Throwable t) {
+                result.setValue(fail);
+            }
+        });
+        return result;
     }
 }
