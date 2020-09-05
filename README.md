@@ -1,4 +1,4 @@
-<p align="center"><img src="app/src/main/res/drawable/sss.png" width="400"></p>
+<p align="center"><img src="https://ibb.co/SJwfq1C" width="400"></p>
 <p>![Logo](/images/logo.jpeg)</p>
 <p align="center">
     Revive Wastage android app
