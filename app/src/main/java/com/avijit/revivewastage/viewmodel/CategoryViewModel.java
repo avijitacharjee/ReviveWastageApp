@@ -28,4 +28,10 @@ public class CategoryViewModel extends ViewModel {
     public MutableLiveData<NetworkResponse<Category>> store(Category category){
         return categoryRepository.store(category);
     }
+    public MutableLiveData<NetworkResponse<Category>> update(Category category){
+        return categoryRepository.update(category);
+    }
+    public MutableLiveData<NetworkResponse<Category>> delete(Category category){
+        return categoryRepository.delete(category);
+    }
 }

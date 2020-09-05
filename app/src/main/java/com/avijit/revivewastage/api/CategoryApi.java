@@ -5,6 +5,8 @@ import java.util.List;
 import com.avijit.revivewastage.model.NetworkResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
@@ -19,9 +21,10 @@ public interface CategoryApi {
     @POST("category")
     Call<NetworkResponse<Category>> store(@Body Category category);
 
+    @FormUrlEncoded
     @POST("category")
-    Call<NetworkResponse<Category>> update(@Body Category category);
-
+    Call<NetworkResponse<Category>> update(@Field("update")String id,@Body Category category);
+    @FormUrlEncoded
     @POST("category")
-    Call<NetworkResponse<Category>> delete(@Body Category category);
+    Call<NetworkResponse<Category>> delete(@Field("delete")String id);
 }

@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,10 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Avijit Acharjee on 9/1/2020 at 8:48 PM.
- * Email: avijitach@gmail.com.
- */
+
 public class AdminCategoryFragment extends Fragment {
     RecyclerView recyclerView;
     private List<Category> categoryList;
@@ -52,10 +50,21 @@ public class AdminCategoryFragment extends Fragment {
         viewModel.all().observe(this,response->{
             appUtils.dialog.dismiss();
             textView.setText(response.toString());
-            adapter = new CategoryRecyclerViewAdapter(response.getData(),getContext());
+            adapter = new CategoryRecyclerViewAdapter(response.getData(),viewModel,this);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(adapter);
         });
+        fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener( v->{
+
+        });
+    }
+    public static class AddCategoryDialogFragment extends DialogFragment {
+        @Nullable
+        @Override
+        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.fragment_add_category,null,false);
+        }
     }
 }

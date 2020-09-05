@@ -75,4 +75,48 @@ public class CategoryRepository {
         });
         return result;
     }
+
+    public MutableLiveData<NetworkResponse<Category>> update(Category category) {
+        MutableLiveData<NetworkResponse<Category>> result = new MutableLiveData<>();
+        NetworkResponse<Category> fail = new NetworkResponse<>();
+        fail.setNetworkSuccessful(false);
+        categoryApi.update(category.getDelete(),category).enqueue(new Callback<NetworkResponse<Category>>() {
+            @Override
+            public void onResponse(Call<NetworkResponse<Category>> call, Response<NetworkResponse<Category>> response) {
+                if (response.isSuccessful()) {
+                    result.setValue(response.body());
+                } else {
+                    result.setValue(fail);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NetworkResponse<Category>> call, Throwable t) {
+                result.setValue(fail);
+            }
+        });
+        return result;
+    }
+
+    public MutableLiveData<NetworkResponse<Category>> delete(Category category) {
+        MutableLiveData<NetworkResponse<Category>> result = new MutableLiveData<>();
+        NetworkResponse<Category> fail = new NetworkResponse<>();
+        fail.setNetworkSuccessful(false);
+        categoryApi.delete(category.getDelete()).enqueue(new Callback<NetworkResponse<Category>>() {
+            @Override
+            public void onResponse(Call<NetworkResponse<Category>> call, Response<NetworkResponse<Category>> response) {
+                if (response.isSuccessful()) {
+                    result.setValue(response.body());
+                } else {
+                    result.setValue(fail);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NetworkResponse<Category>> call, Throwable t) {
+                result.setValue(fail);
+            }
+        });
+        return result;
+    }
 }
