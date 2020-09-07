@@ -16,21 +16,46 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.avijit.revivewastage.fragment.buyer.ProductsFragment;
+import com.avijit.revivewastage.fragment.buyer.ProfileFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class BuyProduct extends AppCompatActivity {
     RecyclerView allProductRecyclerView;
-
+    BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_product);
+        bottomNavigationView = findViewById(R.id.bn);
         allProductRecyclerView = findViewById(R.id.all_product_recycler_view);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         allProductRecyclerView.setLayoutManager(layoutManager);
         RequestQueue requestQueue = Volley.newRequestQueue(BuyProduct.this);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.products_bn: {
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.buyer_container,new ProductsFragment())
+                            .commit();
+                    return true;
+                }
+                case R.id.profile_bn : {
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.buyer_container,new ProfileFragment())
+                            .commit();
+                    return true;
+                }
+            }
+            return false;
+        });
+
         String url = "https://finalproject.xyz/revive_wastage/api.php/product";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, response -> {
         },
