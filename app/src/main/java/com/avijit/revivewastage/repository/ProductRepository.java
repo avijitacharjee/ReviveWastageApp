@@ -55,7 +55,7 @@ public class ProductRepository {
         MutableLiveData<NetworkResponse<Product>> result = new MutableLiveData<>();
         NetworkResponse<Product> fail = new NetworkResponse<>();
         fail.setNetworkSuccessful(false);
-        productApi.storeProduct(product).enqueue(new Callback<NetworkResponse<Product>>() {
+        productApi.storeProduct(product.getName(),product.getQuantity(),product.getPrice(),product.getDetails(),product.getImage(),product.getCategory_id()).enqueue(new Callback<NetworkResponse<Product>>() {
             @Override
             public void onResponse(Call<NetworkResponse<Product>> call, Response<NetworkResponse<Product>> response) {
                 if(response.isSuccessful()){
