@@ -14,10 +14,11 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".AdminActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar"></activity>
-        <activity android:name=".BuyProduct" />
+        <activity android:name=".BuyProduct"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"/>
         <activity
             android:name=".SellProduct"
-            android:theme="@style/Theme.MaterialComponents" />
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity android:name=".Profile" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SignUp" />

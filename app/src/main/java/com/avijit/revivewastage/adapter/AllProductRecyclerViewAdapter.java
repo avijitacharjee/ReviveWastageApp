@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.avijit.revivewastage.R;
 import com.avijit.revivewastage.model.Product;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -27,14 +28,14 @@ public class AllProductRecyclerViewAdapter extends RecyclerView.Adapter<AllProdu
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate( R.layout.fragment_products,null));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate( R.layout.item_product,parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.productNameTextView.setText(productList.get(position).getName());
         holder.priceTextView.setText(productList.get(position).getPrice());
-
+        Picasso.get().load("http://finalproject.xyz/revive_wastage/images/"+productList.get(position).getImage()).into(holder.productImageView);
     }
 
     @Override

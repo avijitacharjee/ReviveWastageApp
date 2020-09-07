@@ -155,7 +155,7 @@ public class SellProduct extends AppCompatActivity {
         }
     }
     private boolean valid(){
-        if(catSpinner.getSelectedItemPosition()<1){
+        if(catSpinner.getSelectedItemPosition()<1 || bitmap==null || productNameEditText.getText().toString().equalsIgnoreCase("") || priceEditText.getText().toString().equalsIgnoreCase("")){
             return false;
         }
         return true;
