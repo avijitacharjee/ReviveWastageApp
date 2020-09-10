@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AdminActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar"></activity>
-        <activity android:name=".BuyProduct"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar"/>
+        <activity android:name=".ProductDetailsActivity"></activity>
+        <activity
+            android:name=".AdminActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity
+            android:name=".BuyProduct"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".SellProduct"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />

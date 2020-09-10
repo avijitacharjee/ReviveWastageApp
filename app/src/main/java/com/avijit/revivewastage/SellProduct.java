@@ -101,6 +101,7 @@ public class SellProduct extends AppCompatActivity {
                 else {
                     Toast.makeText(this, "Failed to connect", Toast.LENGTH_SHORT).show();
                 }
+
             });
             /*RequestQueue requestQueue = Volley.newRequestQueue(SellProduct.this);
             String url = "https://finalproject.xyz/revive_wastage/api.php/product";
@@ -133,9 +134,7 @@ public class SellProduct extends AppCompatActivity {
             };
             requestQueue.add(stringRequest);*/
         });
-        selectImageButton.setOnClickListener(v->{
-            chooseImage(v);
-        });
+        selectImageButton.setOnClickListener(this::chooseImage);
     }
     public void chooseImage(View view) {
         Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -155,9 +154,6 @@ public class SellProduct extends AppCompatActivity {
         }
     }
     private boolean valid(){
-        if(catSpinner.getSelectedItemPosition()<1 || bitmap==null || productNameEditText.getText().toString().equalsIgnoreCase("") || priceEditText.getText().toString().equalsIgnoreCase("")){
-            return false;
-        }
-        return true;
+        return catSpinner.getSelectedItemPosition() >= 1 && bitmap != null && !productNameEditText.getText().toString().equalsIgnoreCase("") && !priceEditText.getText().toString().equalsIgnoreCase("");
     }
 }

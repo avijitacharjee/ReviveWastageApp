@@ -12,6 +12,7 @@
         android:id="@+id/product_image_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:transitionName="profile"
         tools:src="@drawable/ic_profile"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/product_name_text_view"
