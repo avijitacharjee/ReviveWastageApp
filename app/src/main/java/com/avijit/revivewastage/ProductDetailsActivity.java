@@ -1,6 +1,7 @@
 package com.avijit.revivewastage;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -32,5 +33,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
         binding.priceTextView.setText("$"+product.getPrice());
         binding.detailsTextView.setText(product.getDetails());
         Picasso.get().load("http://finalproject.xyz/revive_wastage/images/"+product.getImage()).into(binding.productImageView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        binding.recyclerView.setLayoutManager(layoutManager);
+
+        binding.progressDialog.setVisibility(View.VISIBLE);
     }
 }

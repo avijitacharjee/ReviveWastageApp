@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.avijit.revivewastage.api.ProductApi;
 import com.avijit.revivewastage.api.RetrofitService;
+import com.avijit.revivewastage.model.Bid;
 import com.avijit.revivewastage.model.NetworkResponse;
 import com.avijit.revivewastage.model.Product;
 
@@ -68,6 +69,29 @@ public class ProductRepository {
 
             @Override
             public void onFailure(Call<NetworkResponse<Product>> call, Throwable t) {
+                result.setValue(fail);
+            }
+        });
+        return result;
+    }
+
+    public MutableLiveData<NetworkResponse<List<Bid>>> getAllBids(){
+        MutableLiveData<NetworkResponse<List<Bid>>> result = new MutableLiveData<>();
+        NetworkResponse<List<Bid>> fail = new NetworkResponse<>();
+        fail.setNetworkSuccessful(false);
+        productApi.getAllBids().enqueue(new Callback<NetworkResponse<List<Bid>>>() {
+            @Override
+            public void onResponse(Call<NetworkResponse<List<Bid>>> call, Response<NetworkResponse<List<Bid>>> response) {
+                if(response.isSuccessful()){
+                    result.setValue(response.body());
+                }
+                else {
+                    result.setValue(fail);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NetworkResponse<List<Bid>>> call, Throwable t) {
                 result.setValue(fail);
             }
         });

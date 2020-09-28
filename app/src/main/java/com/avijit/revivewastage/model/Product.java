@@ -13,6 +13,7 @@ public class Product {
     private String image;
     private String category_id;
 
+
     public String getId() {
         return id;
     }

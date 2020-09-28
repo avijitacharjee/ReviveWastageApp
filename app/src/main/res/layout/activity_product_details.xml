@@ -9,18 +9,20 @@
     tools:context=".ProductDetailsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/product_details"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/product_image_view"
             android:layout_width="match_parent"
-            android:transitionName="profile"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:background="@color/black_1"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_product" />
+            android:src="@drawable/ic_product"
+            android:transitionName="profile"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/product_name_text_view"
             android:layout_width="0dp"
@@ -56,6 +58,57 @@
             app:layout_constraintTop_toBottomOf="@+id/price_text_view"
             tools:text="@tools:sample/lorem" />
 
+        <EditText
+            android:id="@+id/bid_description_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/enter_bid_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_text_view" />
+
+        <EditText
+            android:id="@+id/bid_amount_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/enter_bid_amount"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bid_description_edit_text" />
+
+        <TextView
+            android:id="@+id/bid_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="10dp"
+            android:background="@color/black_1"
+            android:fontFamily="@font/advent_pro"
+            android:gravity="center"
+            android:text="@string/place_a_bid"
+            android:textColor="@color/white_1"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/bid_amount_edit_text" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bid_button" />
+        <ProgressBar
+            android:id="@+id/progress_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bid_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

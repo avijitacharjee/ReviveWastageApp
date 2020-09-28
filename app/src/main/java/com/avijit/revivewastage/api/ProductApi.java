@@ -1,5 +1,6 @@
 package com.avijit.revivewastage.api;
 
+import com.avijit.revivewastage.model.Bid;
 import com.avijit.revivewastage.model.NetworkResponse;
 import com.avijit.revivewastage.model.Product;
 
@@ -23,4 +24,7 @@ public interface ProductApi {
     @FormUrlEncoded
     @POST("product")
     Call<NetworkResponse<Product>> storeProduct(@Field("name")String name,@Field("quantity")String quantity,@Field("price")String price,@Field("details")String details,@Field("image")String image,@Field("category_id")String category_id);
+
+    @GET("bid")
+    Call<NetworkResponse<List<Bid>>> getAllBids();
 }
