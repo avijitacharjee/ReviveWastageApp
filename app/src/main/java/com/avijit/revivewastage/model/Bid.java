@@ -1,5 +1,8 @@
 package com.avijit.revivewastage.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Avijit Acharjee on 9/10/2020 at 8:44 PM.
  * Email: avijitach@gmail.com.
@@ -108,5 +111,14 @@ public class Bid {
 
     public void setUser_type(String user_type) {
         this.user_type = user_type;
+    }
+    public static List<Bid> filterByProductId(List<Bid> bidList,String id){
+        List<Bid> result = new ArrayList<>();
+        for (Bid bid: bidList) {
+            if(bid.getProduct_id().equals(id)){
+                result.add(bid);
+            }
+        }
+        return result;
     }
 }

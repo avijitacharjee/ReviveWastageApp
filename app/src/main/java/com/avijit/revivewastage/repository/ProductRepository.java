@@ -97,4 +97,26 @@ public class ProductRepository {
         });
         return result;
     }
+    public MutableLiveData<NetworkResponse<Bid>> placeABid(Bid bid){
+        MutableLiveData<NetworkResponse<Bid>> result = new MutableLiveData<>();
+        NetworkResponse<Bid> fail = new NetworkResponse<>();
+        fail.setNetworkSuccessful(false);
+        productApi.placeABit(bid.getDescription(),bid.getAmount(),bid.getProduct_id(),bid.getUser_id()).enqueue(new Callback<NetworkResponse<Bid>>() {
+            @Override
+            public void onResponse(Call<NetworkResponse<Bid>> call, Response<NetworkResponse<Bid>> response) {
+                if(response.isSuccessful()){
+                    result.setValue(response.body());
+                }
+                else {
+                    result.setValue(fail);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NetworkResponse<Bid>> call, Throwable t) {
+                result.setValue(fail);
+            }
+        });
+        return result;
+    }
 }
