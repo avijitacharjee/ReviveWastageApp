@@ -61,7 +61,7 @@ public class ProductDetailsActivity extends BaseActivity {
         binding.recyclerView.setLayoutManager(layoutManager);
         adapter = new BidsRecyclerViewAdapter(bids);
         binding.recyclerView.setAdapter(adapter);
-        binding.progressDialog.setVisibility(View.VISIBLE);
+
         setBids();
         binding.bidButton.setOnClickListener(v->{
             Bid bid = new Bid();
@@ -69,16 +69,22 @@ public class ProductDetailsActivity extends BaseActivity {
             bid.setDescription(binding.bidDescriptionEditText.getText().toString());
             bid.setProduct_id(product.getId());
             bid.setUser_id(userId);
+            appUtils.dialog.show();
             viewModel.placeABid(bid).observe(this,response->{
+                appUtils.dialog.dismiss();
                 if(response.isNetworkSuccessful()){
                     Toast.makeText(this, "Successfully Added", Toast.LENGTH_SHORT).show();
-                    setBids();
+                    bids.add(bid);
+                    adapter.notifyDataSetChanged();
+                }
+                else{
+                    Toast.makeText(this, "Connection timed out....", Toast.LENGTH_SHORT).show();
                 }
             });
         });
     }
     private void setBids(){
-
+        binding.progressDialog.setVisibility(View.VISIBLE);
         viewModel.getAllBids().observe(this,response->{
             if(response.isNetworkSuccessful()){
                 binding.progressDialog.setVisibility(View.INVISIBLE);

@@ -29,7 +29,7 @@ public interface ProductApi {
     Call<NetworkResponse<List<Bid>>> getAllBids();
 
     @FormUrlEncoded
-    @POST("place_bid")
+    @POST("bid")
     Call<NetworkResponse<Bid>> placeABit(@Field("description")String description,@Field("amount")String amount,@Field("product_id")String productId,@Field("user_id")String userId);
 
 }
