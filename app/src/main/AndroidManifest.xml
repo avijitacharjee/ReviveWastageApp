@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ProductDetailsActivity"></activity>
+        <activity android:name=".MyProductsForSell"></activity>
+        <activity android:name=".ProductDetailsActivity" />
         <activity
             android:name=".AdminActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
