@@ -33,14 +33,14 @@ public class BuyProduct extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.buyer_container,new ProductsFragment())
+                .replace(R.id.buyer_container,getProductFragment())
                 .commit();
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.products_bn: {
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.buyer_container,new ProductsFragment())
+                            .replace(R.id.buyer_container,getProductFragment())
                             .commit();
                     return true;
                 }
@@ -55,5 +55,12 @@ public class BuyProduct extends AppCompatActivity {
             return false;
         });
 
+    }
+    private ProductsFragment getProductFragment(){
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("seller",false);
+        ProductsFragment productsFragment = new ProductsFragment();
+        productsFragment.setArguments(bundle);
+        return productsFragment;
     }
 }

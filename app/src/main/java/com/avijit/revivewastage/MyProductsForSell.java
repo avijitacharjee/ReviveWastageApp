@@ -10,7 +10,9 @@ import com.avijit.revivewastage.fragment.buyer.ProductsFragment;
 import com.avijit.revivewastage.utils.AppUtils;
 
 public class MyProductsForSell extends BaseActivity {
+    private static final String TAG = "MyProductsForSell";
     ActivityMyProductsForSellBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +21,17 @@ public class MyProductsForSell extends BaseActivity {
         View view = binding.getRoot();
         setContentView(view);
         appUtils = new AppUtils(this);
+
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.buyer_container,new ProductsFragment())
+                .replace(R.id.my_product_for_sell_container,getProductFragmentForSeller())
                 .commit();
+    }
+    private ProductsFragment getProductFragmentForSeller(){
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("seller", true);
+        ProductsFragment productsFragment = new ProductsFragment();
+        productsFragment.setArguments(bundle);
+        return productsFragment;
     }
 }

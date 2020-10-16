@@ -24,10 +24,11 @@ import java.util.List;
 public class AllProductRecyclerViewAdapter extends RecyclerView.Adapter<AllProductRecyclerViewAdapter.ViewHolder>{
     private List<Product> productList;
     private Context context;
-
-    public AllProductRecyclerViewAdapter(List<Product> productList, Context context) {
+    private boolean isSeller;
+    public AllProductRecyclerViewAdapter(List<Product> productList, Context context,boolean isSeller) {
         this.productList = productList;
         this.context = context;
+        this.isSeller = isSeller;
     }
 
     @NonNull
@@ -44,6 +45,7 @@ public class AllProductRecyclerViewAdapter extends RecyclerView.Adapter<AllProdu
         holder.itemView.setOnClickListener(v->{
             Intent intent = new Intent(context, ProductDetailsActivity.class);
             intent.putExtra("product",new Gson().toJson(productList.get(position)));
+            intent.putExtra("seller",isSeller);
             ActivityOptionsCompat options = ActivityOptionsCompat.
                     makeSceneTransitionAnimation((Activity) context, holder.productImageView, "profile");
             context.startActivity(intent, options.toBundle());

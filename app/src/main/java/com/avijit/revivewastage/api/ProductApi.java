@@ -32,4 +32,7 @@ public interface ProductApi {
     @POST("bid")
     Call<NetworkResponse<Bid>> placeABit(@Field("description")String description,@Field("amount")String amount,@Field("product_id")String productId,@Field("user_id")String userId);
 
+    @FormUrlEncoded
+    @POST("approve_bid")
+    Call<NetworkResponse<Bid>> approveBid(@Field("bid_id") String bidId);
 }

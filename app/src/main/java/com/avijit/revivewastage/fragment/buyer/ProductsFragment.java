@@ -36,9 +36,11 @@ public class ProductsFragment extends Fragment {
     List<Product> productList;
     ProductViewModel viewModel;
     AppUtils appUtils;
+    private boolean isSeller;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        isSeller = this.getArguments().getBoolean("seller");
         return inflater.inflate(R.layout.fragment_products,null,false);
     }
 
@@ -49,7 +51,7 @@ public class ProductsFragment extends Fragment {
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(),2);
         productRecyclerView.setLayoutManager(layoutManager);
         productList = new ArrayList<>();
-        adapter = new AllProductRecyclerViewAdapter(productList,getContext());
+        adapter = new AllProductRecyclerViewAdapter(productList,getContext(),isSeller);
         productRecyclerView.setAdapter(adapter);
         viewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
         appUtils = new AppUtils(getContext());

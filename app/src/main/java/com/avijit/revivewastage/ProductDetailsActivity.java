@@ -35,6 +35,7 @@ public class ProductDetailsActivity extends BaseActivity {
     List<Bid> bids;
     BidsRecyclerViewAdapter adapter;
     String userId;
+    private boolean isSeller;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +45,13 @@ public class ProductDetailsActivity extends BaseActivity {
         binding = ActivityProductDetailsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        isSeller = getIntent().getExtras().getBoolean("seller");
+        if(isSeller){
+            binding.bidDescriptionEditText.setVisibility(View.GONE);
+            binding.bidAmountEditText.setVisibility(View.GONE);
+            binding.bidButton.setVisibility(View.GONE);
 
+        }
         try {
             product = new Gson().fromJson(Objects.requireNonNull(getIntent().getExtras()).getString("product"),Product.class);
             JSONObject jsonObject = new JSONObject(getSharedPreferences("Revive",MODE_PRIVATE).getString("user",""));
@@ -59,7 +66,7 @@ public class ProductDetailsActivity extends BaseActivity {
         Picasso.get().load("http://finalproject.xyz/revive_wastage/images/"+product.getImage()).into(binding.productImageView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.recyclerView.setLayoutManager(layoutManager);
-        adapter = new BidsRecyclerViewAdapter(bids);
+        adapter = new BidsRecyclerViewAdapter(this,bids,isSeller);
         binding.recyclerView.setAdapter(adapter);
 
         setBids();

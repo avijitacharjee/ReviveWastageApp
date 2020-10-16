@@ -36,4 +36,7 @@ public class ProductViewModel extends ViewModel {
     public MutableLiveData<NetworkResponse<Bid>> placeABid(Bid bid){
         return productRepository.placeABid(bid);
     }
+    public MutableLiveData<NetworkResponse<Bid>> approveBid(Bid bid){
+        return productRepository.approveBid(bid);
+    }
 }

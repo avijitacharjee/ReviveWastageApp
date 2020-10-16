@@ -12,7 +12,15 @@ public class Product {
     private String details;
     private String image;
     private String category_id;
+    private String approved_bid;
 
+    public String getApproved_bid() {
+        return approved_bid;
+    }
+
+    public void setApproved_bid(String approved_bid) {
+        this.approved_bid = approved_bid;
+    }
 
     public String getId() {
         return id;
