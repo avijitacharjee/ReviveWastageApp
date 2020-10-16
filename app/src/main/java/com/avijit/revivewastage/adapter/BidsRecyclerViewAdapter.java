@@ -37,6 +37,7 @@ public class BidsRecyclerViewAdapter extends RecyclerView.Adapter<BidsRecyclerVi
         this.bidList = bidList;
         this.isSeller = isSeller;
         viewModel = ViewModelProviders.of((ProductDetailsActivity) context).get(ProductViewModel.class);
+        appUtils = new AppUtils(context);
     }
     @NonNull
     @Override
@@ -60,6 +61,7 @@ public class BidsRecyclerViewAdapter extends RecyclerView.Adapter<BidsRecyclerVi
             holder.approveTextView.setOnClickListener(v->{
                 appUtils.dialog.show();
                 viewModel.approveBid(bidList.get(position)).observe((ProductDetailsActivity)context,response->{
+                    appUtils.dialog.dismiss();
                    if(!response.isNetworkSuccessful()){
                        Toast.makeText(context, "Failed to connect", Toast.LENGTH_SHORT).show();
                        return;
