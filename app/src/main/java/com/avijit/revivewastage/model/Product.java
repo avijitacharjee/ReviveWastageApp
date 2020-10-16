@@ -1,5 +1,8 @@
 package com.avijit.revivewastage.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Avijit Acharjee on 9/1/2020 at 4:30 PM.
  * Email: avijitach@gmail.com.
@@ -77,4 +80,5 @@ public class Product {
     public void setCategory_id(String category_id) {
         this.category_id = category_id;
     }
+
 }

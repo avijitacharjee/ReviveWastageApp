@@ -34,5 +34,5 @@ public interface ProductApi {
 
     @FormUrlEncoded
     @POST("approve_bid")
-    Call<NetworkResponse<Bid>> approveBid(@Field("bid_id") String bidId);
+    Call<NetworkResponse<Bid>> approveBid(@Field("bid_id") String bidId,@Field("id") String id);
 }

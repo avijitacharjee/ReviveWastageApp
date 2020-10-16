@@ -124,7 +124,7 @@ public class ProductRepository {
         MutableLiveData<NetworkResponse<Bid>> result = new MutableLiveData<>();
         NetworkResponse<Bid> fail = new NetworkResponse<>();
         fail.setNetworkSuccessful(false);
-        productApi.approveBid(bid.getId()).enqueue(new Callback<NetworkResponse<Bid>>() {
+        productApi.approveBid(bid.getId(),bid.getProduct_id()).enqueue(new Callback<NetworkResponse<Bid>>() {
             @Override
             public void onResponse(Call<NetworkResponse<Bid>> call, Response<NetworkResponse<Bid>> response) {
                 if(response.isSuccessful()){
