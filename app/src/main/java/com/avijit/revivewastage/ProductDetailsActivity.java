@@ -54,7 +54,7 @@ public class ProductDetailsActivity extends BaseActivity {
             Log.d(TAG, "onCreate: "+e);
         }
         binding.productNameTextView.setText(product.getName());
-        binding.priceTextView.setText("$"+product.getPrice());
+        binding.priceTextView.setText(String.format("$%s", product.getPrice()));
         binding.detailsTextView.setText(product.getDetails());
         Picasso.get().load("http://finalproject.xyz/revive_wastage/images/"+product.getImage()).into(binding.productImageView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
