@@ -80,7 +80,6 @@ public class SignUp extends BaseActivity {
                     }
                 };
                 requestQueue.add(stringRequest);
-
             }
         });
     }

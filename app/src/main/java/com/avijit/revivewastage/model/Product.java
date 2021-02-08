@@ -3,10 +3,7 @@ package com.avijit.revivewastage.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Avijit Acharjee on 9/1/2020 at 4:30 PM.
- * Email: avijitach@gmail.com.
- */
+
 public class Product {
     private String id;
     private String name;

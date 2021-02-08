@@ -1,5 +1,6 @@
 package com.avijit.revivewastage.repository;
 
+import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.avijit.revivewastage.api.ProductApi;
@@ -7,6 +8,7 @@ import com.avijit.revivewastage.api.RetrofitService;
 import com.avijit.revivewastage.model.Bid;
 import com.avijit.revivewastage.model.NetworkResponse;
 import com.avijit.revivewastage.model.Product;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -14,13 +16,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 /**
  * Created by Avijit Acharjee on 9/1/2020 at 4:45 PM.
  * Email: avijitach@gmail.com.
  */
+
 public class ProductRepository {
     private ProductApi productApi;
     private static ProductRepository productRepository;
+    private static final String TAG = "ProductRepository";
     public static ProductRepository getInstance(){
         if(productRepository==null){
             productRepository=new ProductRepository();
@@ -44,7 +49,6 @@ public class ProductRepository {
                     result.setValue(fail);
                 }
             }
-
             @Override
             public void onFailure(Call<NetworkResponse<List<Product>>> call, Throwable t) {
                 result.setValue(fail);
@@ -59,6 +63,7 @@ public class ProductRepository {
         productApi.storeProduct(product.getName(),product.getQuantity(),product.getPrice(),product.getDetails(),product.getImage(),product.getCategory_id()).enqueue(new Callback<NetworkResponse<Product>>() {
             @Override
             public void onResponse(Call<NetworkResponse<Product>> call, Response<NetworkResponse<Product>> response) {
+                Log.d(TAG, "onResponse: "+new Gson().toJson(response));
                 if(response.isSuccessful()){
                     result.setValue(response.body());
                 }
@@ -142,5 +147,4 @@ public class ProductRepository {
         });
         return result;
     }
-
 }
